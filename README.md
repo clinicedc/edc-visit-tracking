@@ -56,7 +56,7 @@ The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneF
         rdb = models.CharField(max_length=10, default=NO)
     
         class Meta:
-            consent_model = 'myapp.subjectconsent'
+            consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
 
 ### Declaring forms:
 
