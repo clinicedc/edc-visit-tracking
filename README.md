@@ -7,27 +7,44 @@ Track study participant visit reports.
 
 ### Declaring a visit model
 
+A __visit_model__ is declared using the model mixin `VisitModelMixin`. Normally, a __visit_model__ will be declared with additional model mixins, but `VisitModelMixin` must be there.
+
+    class SubjectVisit(VisitModelMixin, BaseUuidModel):
+        ...
+
+Also, ensure the `Meta` class attributes of `VisitModelMixin` are inherited. These include required constraints and ordering.
+
+    class SubjectVisit(VisitModelMixin, BaseUuidModel):
+    
+        ...
+        
+        class Meta(VisitModelMixin.Meta):
+            pass
+    
+
+> Important: A __visit model__ is a special model in the EDC. A model declared with the model mixin, `VisitModelMixin`, is the definition of a __visit model__. CRFs and Requisitions have a foreign key pointing to a __visit model__. A number of methods on CRFs and Requisitions detect their __visit model__ foreign key name, model class and value by looking for the FK declared with `VisitModelMixin`.
+
+
 For a subject that requires ICF would look like this:
 
     class SubjectVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, RequiresConsentModelMixin, BaseUuidModel):
     
         class Meta(VisitModelMixin.Meta):
-            consent_model = 'edc_example.subjectconsent'
-            app_label = 'edc_example'
-
+            consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
+            
 
 If the subject does not require ICF, such as an infant, just don't include the `RequiresConsentModelMixin`:
 
     class InfantVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, BaseUuidModel):
     
         class Meta(VisitModelMixin.Meta):
-            app_label = 'edc_example'
+            pass
 
 In both cases a `OneToOneField` attr to `edc_example.Appointment` is added through the `VisitModelMixin` mixin, so `edc_example.Appointment` must exist.
 
 ### Declaring a CRF
 
-The `CrfModelMixin` is required for all CRF models. CRF models have a key to the visit model.
+The `CrfModelMixin` is required for all CRF models. CRF models have a key to a __visit model__.
 
     class CrfOne(CrfModelMixin, OffstudyMixin, RequiresConsentModelMixin, UpdatesCrfMetadataModelMixin, BaseUuidModel):
     
