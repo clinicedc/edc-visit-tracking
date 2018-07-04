@@ -43,9 +43,9 @@ If the subject does not require ICF, such as an infant, don't include the `Requi
 
 ### Declaring a CRF
 
-The `CrfModelMixin` is required for all CRF models. CRF models have a key to a __visit model__.
+The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneField` key to a __visit model__.
 
-    class CrfOne(CrfModelMixin, OffstudyMixin, RequiresConsentModelMixin, UpdatesCrfMetadataModelMixin, BaseUuidModel):
+    class CrfOne(CrfModelMixin, OffstudyCrfModelMixin, RequiresConsentModelMixin, UpdatesCrfMetadataModelMixin, BaseUuidModel):
     
         subject_visit = models.OneToOneField(SubjectVisit)
     
@@ -57,7 +57,6 @@ The `CrfModelMixin` is required for all CRF models. CRF models have a key to a _
     
         class Meta:
             consent_model = 'myapp.subjectconsent'
-            offstudy_model = 'edc_offstudy.subjectoffstudy'
 
 ### Declaring forms:
 
