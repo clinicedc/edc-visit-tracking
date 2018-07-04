@@ -41,8 +41,6 @@ If the subject does not require ICF, such as an infant, don't include the `Requi
         class Meta(VisitModelMixin.Meta):
             pass
 
-In both cases a `OneToOneField` attribute to `edc_appointment.Appointment` is added through the `VisitModelMixin` model mixin.
-
 ### Declaring a CRF
 
 The `CrfModelMixin` is required for all CRF models. CRF models have a key to a __visit model__.
