@@ -56,9 +56,8 @@ The `CrfModelMixin` is required for all CRF models. CRF models have a key to a _
         rdb = models.CharField(max_length=10, default=NO)
     
         class Meta:
-            consent_model = 'edc_example.subjectconsent'
-            app_label = 'edc_example'
-            offstudy_model = 'edc_example.subjectoffstudy'
+            consent_model = 'myapp.subjectconsent'
+            offstudy_model = 'edc_offstudy.subjectoffstudy'
 
 ### Declaring forms:
 
