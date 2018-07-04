@@ -21,11 +21,12 @@ Also, ensure the `Meta` class attributes of `VisitModelMixin` are inherited. The
         class Meta(VisitModelMixin.Meta):
             pass
     
+Among other features, `VisitModelMixin` adds a `OneToOneField` foreign key to the __visit_model__ that points to `edc_appointment.Appointment`.
 
 > Important: A __visit model__ is a special model in the EDC. A model declared with the model mixin, `VisitModelMixin`, is the definition of a __visit model__. CRFs and Requisitions have a foreign key pointing to a __visit model__. A number of methods on CRFs and Requisitions detect their __visit model__ foreign key name, model class and value by looking for the FK declared with `VisitModelMixin`.
 
 
-For a subject that requires ICF would look like this:
+For a subject that requires ICF the __visit model__ would look like this:
 
     class SubjectVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, RequiresConsentModelMixin, BaseUuidModel):
     
@@ -33,14 +34,14 @@ For a subject that requires ICF would look like this:
             consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
             
 
-If the subject does not require ICF, such as an infant, just don't include the `RequiresConsentModelMixin`:
+If the subject does not require ICF, such as an infant, don't include the `RequiresConsentModelMixin`:
 
     class InfantVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, BaseUuidModel):
     
         class Meta(VisitModelMixin.Meta):
             pass
 
-In both cases a `OneToOneField` attr to `edc_example.Appointment` is added through the `VisitModelMixin` mixin, so `edc_example.Appointment` must exist.
+In both cases a `OneToOneField` attribute to `edc_appointment.Appointment` is added through the `VisitModelMixin` model mixin.
 
 ### Declaring a CRF
 
