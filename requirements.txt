@@ -19,3 +19,4 @@ git+https://github.com/clinicedc/edc-facility@develop#egg=edc-facility
 git+https://github.com/clinicedc/edc-reference@develop#egg=edc-reference
 git+https://github.com/clinicedc/edc-model-admin@develop#egg=edc-model-admin
 git+https://github.com/clinicedc/edc-form-validators@develop#egg=edc-form-validators
+git+https://github.com/clinicedc/edc-model-fields@develop#egg=edc-model-fields
