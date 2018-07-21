@@ -1,6 +1,1 @@
-include AUTHORS CHANGES README.md LICENCE
-recursive-include edc_visit_tracking/templates *
-recursive-include edc_visit_tracking/static *
-recursive-include docs *
-recursive-exclude edc_example/*
-recursive-exclude etc/*
+include AUTHORS CHANGES README LICENCE VERSION
