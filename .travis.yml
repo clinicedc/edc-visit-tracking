@@ -4,26 +4,24 @@ python:
 - 3.6
 - 3.7
 
-services:
-- mysql
+dist: xenial
 
-branches:
-  only:
-  - develop
-
-services:
-  - mysql
+sudo: true
 
 addons:
   apt_packages:
-     - libcups2-dev
+  - libcups2-dev
+
+services:
+- mysql
 
 install:
-  - pip3 install --upgrade pip setuptools
-  - pip3 install flake8
-  - pip3 install coveralls
-  - pip install -e .
-  - pip3 install -q -r requirements.txt
+- pip install --upgrade pip
+- pip install flake8
+- pip install coveralls
+- pip install mysqlclient
+- pip install -e .
+- pip install -q -r requirements.txt
 
 before_script:
   - flake8 edc_visit_tracking
