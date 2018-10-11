@@ -1,18 +1,27 @@
-[![Build Status](https://travis-ci.org/clinicedc/edc-visit-tracking.svg?branch=develop)](https://travis-ci.org/clinicedc/edc-visit-tracking) [![Coverage Status](https://coveralls.io/repos/clinicedc/edc-visit-tracking/badge.svg?branch=develop&service=github)](https://coveralls.io/github/clinicedc/edc-visit-tracking?branch=develop)
+|pypi| |travis| |coverage|
 
-# edc-visit-tracking
+
+edc-visit-tracking
+------------------
 
 Track study participant visit reports.
 
 
-### Declaring a visit model
+Declaring a visit model
++++++++++++++++++++++++
 
-A __visit_model__ is declared using the model mixin `VisitModelMixin`. Normally, a __visit_model__ will be declared with additional model mixins, but `VisitModelMixin` must be there.
+A **visit_model** is declared using the model mixin `VisitModelMixin`. Normally, a **visit_model** will be declared with additional model mixins, but `VisitModelMixin` must be there.
+
+
+.. code-block:: python
 
     class SubjectVisit(VisitModelMixin, BaseUuidModel):
         ...
 
 Also, ensure the `Meta` class attributes of `VisitModelMixin` are inherited. These include required constraints and ordering.
+
+
+.. code-block:: python
 
     class SubjectVisit(VisitModelMixin, BaseUuidModel):
     
@@ -21,14 +30,17 @@ Also, ensure the `Meta` class attributes of `VisitModelMixin` are inherited. The
         class Meta(VisitModelMixin.Meta):
             pass
     
-Among other features, `VisitModelMixin` adds a `OneToOneField` foreign key to the __visit_model__ that points to `edc_appointment.Appointment`.
+Among other features, `VisitModelMixin` adds a `OneToOneField` foreign key to the **visit_model** that points to `edc_appointment.Appointment`.
 
-> Important: A __visit model__ is a special model in the EDC. A model declared with the model mixin, `VisitModelMixin`, is the definition of a __visit model__. CRFs and Requisitions have a foreign key pointing to a __visit model__. A number of methods on CRFs and Requisitions detect their __visit model__ foreign key name, model class and value by looking for the FK declared with `VisitModelMixin`.
+ Important: A **visit model** is a special model in the EDC. A model declared with the model mixin, `VisitModelMixin`, is the definition of a **visit model**. CRFs and Requisitions have a foreign key pointing to a **visit model**. A number of methods on CRFs and Requisitions detect their **visit model** foreign key name, model class and value by looking for the FK declared with `VisitModelMixin`.
 
 
-For a subject that requires ICF the __visit model__ would look like this:
+For a subject that requires ICF the **visit model** would look like this:
 
-    class SubjectVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, RequiresConsentModelMixin, BaseUuidModel):
+.. code-block:: python
+
+    class SubjectVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin,
+                       RequiresConsentModelMixin, BaseUuidModel):
     
         class Meta(VisitModelMixin.Meta):
             consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
@@ -36,16 +48,23 @@ For a subject that requires ICF the __visit model__ would look like this:
 
 If the subject does not require ICF, such as an infant, don't include the `RequiresConsentModelMixin`:
 
-    class InfantVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin, BaseUuidModel):
+.. code-block:: python
+
+    class InfantVisit(VisitModelMixin, OffstudyMixin,
+                      CreatesMetadataModelMixin, BaseUuidModel):
     
         class Meta(VisitModelMixin.Meta):
             pass
 
-### Declaring a CRF
+Declaring a CRF
++++++++++++++++
 
-The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneField` key to a __visit model__.
+The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneField` key to a **visit model**.
 
-    class CrfOne(CrfModelMixin, OffstudyCrfModelMixin, RequiresConsentModelMixin, UpdatesCrfMetadataModelMixin, BaseUuidModel):
+.. code-block:: python
+
+    class CrfOne(CrfModelMixin, OffstudyCrfModelMixin, RequiresConsentModelMixin,
+                 UpdatesCrfMetadataModelMixin, BaseUuidModel):
     
         subject_visit = models.OneToOneField(SubjectVisit)
     
@@ -58,15 +77,29 @@ The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneF
         class Meta:
             consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
 
-### Declaring forms:
-
+Declaring forms:
++++++++++++++++
 The `VisitFormMixin` includes a number of common validations in the `clean` method:
+
+.. code-block:: python
 
     class SubjectVisitForm(VisitFormMixin, forms.ModelForm):
     
         class Meta:
             model = SubjectVisit
 
-### `PreviousVisitModelMixin`
+`PreviousVisitModelMixin`
+++++++++++++++++++++++++
 
 The `PreviousVisitModelMixin` ensures that visits are entered in sequence. It is included with the `VisitModelMixin`.
+
+
+.. |pypi| image:: https://img.shields.io/pypi/v/edc-visit-tracking.svg
+    :target: https://pypi.python.org/pypi/edc-visit-tracking
+    
+.. |travis| image:: https://travis-ci.org/clinicedc/edc-visit-tracking.svg?branch=develop
+    :target: https://travis-ci.org/clinicedc/edc-visit-tracking
+    
+.. |coverage| image:: https://coveralls.io/repos/github/clinicedc/edc-visit-tracking/badge.svg?branch=develop
+    :target: https://coveralls.io/github/clinicedc/edc-visit-tracking?branch=develop
+
