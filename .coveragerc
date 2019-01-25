@@ -4,4 +4,5 @@ omit =
     setup.py
     manage.py
     */migrations/*
-    venv/*
+    .tox/*
+    runtests.py

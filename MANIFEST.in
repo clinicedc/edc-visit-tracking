@@ -1,1 +1,6 @@
-include AUTHORS CHANGES README LICENSE VERSION
+include AUTHORS CHANGES LICENSE VERSION
+include MANIFEST.in
+include *.rst
+include *.txt
+recursive-include docs *.rst
+recursive-include edc_visit_tracking/templates *
