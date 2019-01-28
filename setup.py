@@ -36,6 +36,8 @@ setup(
         'edc_form_validators',
         'edc_constants',
         'edc_protocol',
+        'edc_metadata',
+        'edc_metadata_rules',
         'edc_model_fields',
         'edc_identifier',
         'edc_visit_schedule',
