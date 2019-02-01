@@ -1,4 +1,4 @@
-model_mommy
-edc_offstudy
-edc_registration
-edc_facility
+model-mommy
+edc-offstudy
+edc-registration
+edc-facility

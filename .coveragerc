@@ -3,6 +3,11 @@ omit =
     */wsgi.py
     setup.py
     manage.py
+    */config_utils/*
+    */navbars.py
     */migrations/*
-    .tox/*
+    */mommy_*
+    venv/*
     runtests.py
+    .tox/*
+    .eggs/*

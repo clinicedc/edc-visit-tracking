@@ -34,14 +34,14 @@ installed_apps = [
     'edc_appointment.apps.AppConfig',
     'edc_base.apps.AppConfig',
     'edc_device.apps.AppConfig',
-    'edc_protocol.apps.AppConfig',
-    'edc_timepoint.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
+    'edc_protocol.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_timepoint.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
+    'edc_visit_tracking.apps.AppConfig',
     'edc_visit_tracking.apps.EdcFacilityAppConfig',
     'edc_visit_tracking.apps.EdcMetadataAppConfig',
-    'edc_visit_tracking.apps.AppConfig',
 ]
 
 DEFAULT_SETTINGS = dict(
