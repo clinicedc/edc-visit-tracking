@@ -10,24 +10,15 @@ sudo: true
 addons:
   apt_packages:
   - libcups2-dev
-
 services:
 - mysql
-
 install:
 - pip install --upgrade pip
-- pip install flake8
-- pip install coveralls
-- pip install mysqlclient
-- pip install -e .
-- pip install -q -r requirements.txt
-
+- pip install flake8 coveralls tox-travis
 before_script:
-  - flake8 edc_visit_tracking
-  - mysql -e 'create database edc character set utf8;'
-
-script: 
-  - coverage run --source=edc_visit_tracking manage.py test
-
+- flake8 edc_visit_tracking
+- mysql -e 'create database edc character set utf8;'
+script:
+- coverage run -m tox
 after_success:
-  - coveralls
+- coveralls
