@@ -95,6 +95,19 @@ DEFAULT_SETTINGS = dict(
     PASSWORD_HASHERS=('django.contrib.auth.hashers.MD5PasswordHasher', ),
 )
 
+if os.environ.get("TRAVIS"):
+    DEFAULT_SETTINGS.update(
+        DATABASES={
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'edc',
+                'USER': 'travis',
+                'PASSWORD': '',
+                'HOST': 'localhost',
+                'PORT': '',
+            },
+        })
+
 
 def main():
     if not settings.configured:
