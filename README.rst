@@ -1,5 +1,4 @@
-|pypi| |travis| |coverage|
-
+|pypi| |travis| |codecov| |downloads|
 
 edc-visit-tracking
 ------------------
@@ -100,6 +99,8 @@ The `PreviousVisitModelMixin` ensures that visits are entered in sequence. It is
 .. |travis| image:: https://travis-ci.org/clinicedc/edc-visit-tracking.svg?branch=develop
     :target: https://travis-ci.org/clinicedc/edc-visit-tracking
     
-.. |coverage| image:: https://coveralls.io/repos/github/clinicedc/edc-visit-tracking/badge.svg?branch=develop
-    :target: https://coveralls.io/github/clinicedc/edc-visit-tracking?branch=develop
+.. |codecov| image:: https://codecov.io/gh/clinicedc/edc-visit-tracking/branch/develop/graph/badge.svg
+  :target: https://codecov.io/gh/clinicedc/edc-visit-tracking
 
+.. |downloads| image:: https://pepy.tech/badge/edc-visit-tracking
+   :target: https://pepy.tech/project/edc-visit-tracking
