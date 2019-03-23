@@ -1,4 +1,0 @@
-model-mommy
-edc-offstudy
-edc-registration
-edc-facility
