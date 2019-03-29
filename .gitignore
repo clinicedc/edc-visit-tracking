@@ -1,10 +1,10 @@
 secrets.json
 notebooks/
-etc/
+
 transactions/
 run/
 log/
-crypto_fields/
+
 media/
 
 .Rhistory
