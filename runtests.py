@@ -40,6 +40,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'edc_visit_tracking.apps.EdcMetadataAppConfig',
         'edc_visit_tracking.apps.AppConfig',
     ],
+    add_dashboard_middleware=True,
 ).settings
 
 
