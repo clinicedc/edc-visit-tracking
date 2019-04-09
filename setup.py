@@ -36,7 +36,6 @@ setup(
     keywords='django visit tracking',
     install_requires=[
         'edc-appointment',
-        'edc-base',
         'edc-form-validators',
         'edc-constants',
         'edc-protocol',
