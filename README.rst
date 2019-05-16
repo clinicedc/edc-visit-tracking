@@ -77,7 +77,7 @@ The `CrfModelMixin` is required for all CRF models. CRF models have a `OneToOneF
             consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
 
 Declaring forms:
-+++++++++++++++
+++++++++++++++++
 The `VisitFormMixin` includes a number of common validations in the `clean` method:
 
 .. code-block:: python
@@ -88,7 +88,7 @@ The `VisitFormMixin` includes a number of common validations in the `clean` meth
             model = SubjectVisit
 
 `PreviousVisitModelMixin`
-++++++++++++++++++++++++
++++++++++++++++++++++++++
 
 The `PreviousVisitModelMixin` ensures that visits are entered in sequence. It is included with the `VisitModelMixin`.
 
