@@ -10,7 +10,7 @@ with open(os.path.join(os.path.dirname(__file__), 'VERSION')) as f:
     VERSION = f.read()
 
 tests_require = ["edc_test_utils",
-                 "model-mommy",
+                 "model-bakery",
                  "edc-offstudy",
                  "edc-registration",
                  "edc-facility"]
