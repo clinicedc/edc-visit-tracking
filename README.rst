@@ -92,6 +92,10 @@ The `VisitFormMixin` includes a number of common validations in the `clean` meth
 
 The `PreviousVisitModelMixin` ensures that visits are entered in sequence. It is included with the `VisitModelMixin`.
 
+`VisitTrackingModelFormMixin`
++++++++++++++++++++++++++++++
+
+    see `DEFAULT_REPORT_DATETIME_ALLOWANCE`
 
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-visit-tracking.svg
     :target: https://pypi.python.org/pypi/edc-visit-tracking

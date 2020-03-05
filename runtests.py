@@ -9,7 +9,6 @@ from django.test.runner import DiscoverRunner
 from edc_test_utils import DefaultTestSettings
 from os.path import abspath, dirname
 
-
 app_name = 'edc_visit_tracking'
 base_dir = dirname(abspath(__file__))
 
@@ -18,6 +17,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
+    SUBJECT_VISIT_MODEL="edc_visit_tracking.subjectvisit",
     INSTALLED_APPS=[
         'django.contrib.admin',
         'django.contrib.auth',
@@ -30,14 +30,14 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         'django_revision.apps.AppConfig',
         'edc_appointment.apps.AppConfig',
         'edc_device.apps.AppConfig',
+        'edc_facility.apps.AppConfig',
         'edc_identifier.apps.AppConfig',
+        'edc_metadata.apps.AppConfig',
         'edc_protocol.apps.AppConfig',
         'edc_registration.apps.AppConfig',
         'edc_sites.apps.AppConfig',
         'edc_timepoint.apps.AppConfig',
         'edc_visit_schedule.apps.AppConfig',
-        'edc_visit_tracking.apps.EdcFacilityAppConfig',
-        'edc_visit_tracking.apps.EdcMetadataAppConfig',
         'edc_visit_tracking.apps.AppConfig',
     ],
     add_dashboard_middleware=True,

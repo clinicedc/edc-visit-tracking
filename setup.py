@@ -34,17 +34,7 @@ setup(
     long_description=README,
     zip_safe=False,
     keywords='django visit tracking',
-    install_requires=[
-        'edc-appointment',
-        'edc-form-validators',
-        'edc-constants',
-        'edc-protocol',
-        'edc-metadata',
-        'edc-metadata-rules',
-        'edc-model-fields',
-        'edc-identifier',
-        'edc-visit-schedule',
-    ],
+    install_requires=[],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
