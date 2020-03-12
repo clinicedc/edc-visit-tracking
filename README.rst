@@ -100,8 +100,8 @@ The `PreviousVisitModelMixin` ensures that visits are entered in sequence. It is
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-visit-tracking.svg
     :target: https://pypi.python.org/pypi/edc-visit-tracking
     
-.. |travis| image:: https://travis-ci.org/clinicedc/edc-visit-tracking.svg?branch=develop
-    :target: https://travis-ci.org/clinicedc/edc-visit-tracking
+.. |travis| image:: https://travis-ci.com/clinicedc/edc-visit-tracking.svg?branch=develop
+    :target: https://travis-ci.com/clinicedc/edc-visit-tracking
     
 .. |codecov| image:: https://codecov.io/gh/clinicedc/edc-visit-tracking/branch/develop/graph/badge.svg
   :target: https://codecov.io/gh/clinicedc/edc-visit-tracking
