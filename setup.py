@@ -21,6 +21,7 @@ setup(
     include_package_data=True,
     url="https://github.com/clinicedc/edc-visit-tracking",
     license="GPL license, see LICENSE",
+    long_description_content_type="text/x-rst",
     description="Base classes for visit reports/tracking in clinicedc/edc.",
     long_description=README,
     zip_safe=False,
