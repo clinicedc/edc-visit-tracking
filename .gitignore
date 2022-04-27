@@ -1,3 +1,4 @@
+_version.py
 edc_visit_tracking/tests/etc/django_crypto_fields
 secrets.json
 notebooks/
