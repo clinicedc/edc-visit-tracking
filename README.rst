@@ -214,6 +214,12 @@ To bypass this override ```validate_visit_datetime_in_window_period``` in the ``
 
         ...
 
+Be sure that your appointment form validator is enforcing window periods before
+bypassing this check.
+
+See also `edc_appointment`.
+
+
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-visit-tracking.svg
     :target: https://pypi.python.org/pypi/edc-visit-tracking
 
