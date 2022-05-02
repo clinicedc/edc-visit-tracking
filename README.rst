@@ -34,7 +34,7 @@ Among other features, `VisitModelMixin` adds a `OneToOneField` foreign key to th
  Important: A **visit model** is a special model in the EDC. A model declared with the model mixin, `VisitModelMixin`, is the definition of a **visit model**. CRFs and Requisitions have a foreign key pointing to a **visit model**. A number of methods on CRFs and Requisitions detect their **visit model** foreign key name, model class and value by looking for the FK declared with `VisitModelMixin`.
 
 
-For a subject that requires ICF the **visit model** would look like this:
+For a subject that requires ICF the **visit model** would use the `RequiresConsentModelMixin`:
 
 .. code-block:: python
 
@@ -54,6 +54,41 @@ If the subject does not require ICF, such as an infant, don't include the `Requi
 
         class Meta(VisitModelMixin.Meta):
             pass
+
+
+A more complete declaration will include model mixins from other libraries. For example:
+
+.. code-block:: python
+
+    from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
+    from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
+    from edc_model import models as edc_models
+    from edc_offstudy.model_mixins import OffstudyVisitModelMixin
+    from edc_reference.model_mixins import ReferenceModelMixin
+    from edc_sites.models import CurrentSiteManager
+    from edc_sites.models import SiteModelMixin
+    from edc_visit_tracking.managers import VisitModelManager
+    from edc_visit_tracking.model_mixins import VisitModelMixin
+
+    class SubjectVisit(
+        VisitModelMixin,
+        RequiresConsentFieldsModelMixin,
+        OffstudyVisitModelMixin,
+        CreatesMetadataModelMixin,
+        ReferenceModelMixin,
+        SiteModelMixin,
+        edc_models.BaseUuidModel,
+    ):
+
+
+        on_site = CurrentSiteManager()
+
+        objects = VisitModelManager()
+
+        history = edc_models.HistoricalRecords()
+
+    class Meta(VisitModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+        pass
 
 Declaring a CRF
 +++++++++++++++
@@ -82,7 +117,9 @@ The `VisitFormMixin` includes a number of common validations in the `clean` meth
 
 .. code-block:: python
 
-    class SubjectVisitForm(VisitFormMixin, forms.ModelForm):
+    class SubjectVisitForm(VisitFormMixin, FormValidatorMixin, forms.ModelForm):
+
+        form_validator_cls = VisitFormValidator
 
         class Meta:
             model = SubjectVisit
@@ -105,7 +142,7 @@ A detail report should be submitted for scheduled visits that are missed.
 By selecting the reason ``missed visit`` on ``SubjectVisit``, only the missed visit CRF will be required
 for the timepoint. All other CRFs and requisitions will be excluded.
 
-Unscheduled visits cannot be missed.
+Unscheduled visits cannot be missed. (To change this behaviour see `settings` attrubute `EDC_VISIT_TRACKING_ALLOW_MISSED_UNSCHEDULED`)
 
 The model mixin ``SubjectVisitMissedModelMixin`` provides the basic features of a `SubjectVisitMissed` model.
 
@@ -154,6 +191,33 @@ In your list model app, e.g. ``meta_lists``, declare the list model:
     ],
     ...
     }
+
+
+Window period
++++++++++++++
+
+By default, the visit `report_datetime` is validated to stay within the same window period as the appointment.
+This may be too restrictive in some cases.
+
+To bypass this override ```validate_visit_datetime_in_window_period``` in the ```VisitFormValidator```
+
+.. code-block:: python
+
+    from edc_visit_tracking.form_validators import VisitFormValidator as BaseVisitFormValidator
+
+    class VisitFormValidator(BaseVisitFormValidator):
+
+        ...
+
+        def validate_visit_datetime_in_window_period():
+            pass
+
+        ...
+
+Be sure that your appointment form validator is enforcing window periods before
+bypassing this check.
+
+See also `edc_appointment`.
 
 
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-visit-tracking.svg
