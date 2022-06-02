@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models.deletion import PROTECT
 from edc_crf.stubs import CrfModelStub, TCrfModelStub
-from edc_model.models import datetime_not_future
+from edc_model.validators import datetime_not_future
 from edc_protocol.validators import datetime_not_before_study_start
 from edc_utils import get_utcnow
 from edc_visit_schedule.model_mixins import SubjectScheduleModelMixin
@@ -113,9 +113,7 @@ class VisitTrackingCrfModelMixin(
         return str(self.subject_visit)
 
     def natural_key(self) -> tuple:
-        return tuple(
-            getattr(self, self.visit_model_attr()).natural_key(),
-        )
+        return (getattr(self, self.visit_model_attr()).natural_key(),)  # noqa
 
     # noinspection PyTypeHints
     natural_key.dependencies = [settings.SUBJECT_VISIT_MODEL]  # type:ignore
