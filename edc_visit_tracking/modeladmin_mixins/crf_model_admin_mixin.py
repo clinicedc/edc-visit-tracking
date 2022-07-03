@@ -38,22 +38,26 @@ class CrfModelAdminMixin:
         )
         return list_display
 
-    def get_search_fields(self, request) -> List:
-        search_fields = super().get_search_fields(request)  # type: ignore
+    def get_search_fields(self, request) -> tuple:
+        search_fields = super().get_search_fields(request)
         fields = [f"{self.visit_model_attr}__appointment__subject_identifier"]
         search_fields = [f for f in fields if f not in search_fields] + list(search_fields)
-        return search_fields
+        # this is weird but won't work without
+        # self.search_fields = tuple(search_fields)
+        return tuple(search_fields)
 
-    def get_list_filter(self: Union["CrfModelAdminMixin", admin.ModelAdmin], request) -> List:
-        list_filter = super().get_list_filter(request)  # type: ignore
+    def get_list_filter(self, request) -> tuple:
+        list_filter = super().get_list_filter(request)
         fields = [
             f"{self.visit_model_attr}__report_datetime",
-            f"{self.visit_model_attr}__appointment__visit_code",
+            f"{self.visit_model_attr}__visit_code",
+            f"{self.visit_model_attr}__visit_code_sequence",
             f"{self.visit_model_attr}__reason",
-            f"{self.visit_model_attr}__appointment__appt_status",
         ]
         list_filter = [f for f in list_filter if f not in fields] + fields
-        return list_filter
+        # this is weird but won't work without
+        self.list_filter = tuple(list_filter)
+        return self.list_filter
 
     @property
     def visit_model(self: admin.ModelAdmin) -> TSubjectVisitModelStub:
