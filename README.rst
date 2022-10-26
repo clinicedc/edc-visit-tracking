@@ -38,21 +38,26 @@ For a subject that requires ICF the **visit model** would use the `RequiresConse
 
 .. code-block:: python
 
-    class SubjectVisit(VisitModelMixin, OffstudyMixin, CreatesMetadataModelMixin,
-                       RequiresConsentModelMixin, BaseUuidModel):
+    class SubjectVisit(
+        VisitModelMixin,
+        RequiresConsentFieldsModelMixin,
+        BaseUuidModel,
+    ):
 
-        class Meta(VisitModelMixin.Meta):
-            consent_model = 'myapp.subjectconsent'  # for RequiresConsentModelMixin
+        class Meta(VisitModelMixin.Meta, BaseUuidModel.Meta):
+            pass
 
 
 If the subject does not require ICF, such as an infant, don't include the `RequiresConsentModelMixin`:
 
 .. code-block:: python
 
-    class InfantVisit(VisitModelMixin, OffstudyMixin,
-                      CreatesMetadataModelMixin, BaseUuidModel):
+    class InfantVisit(
+        VisitModelMixin,
+        BaseUuidModel
+    ):
 
-        class Meta(VisitModelMixin.Meta):
+        class Meta(VisitModelMixin.Meta, , BaseUuidModel.Meta):
             pass
 
 
@@ -62,7 +67,7 @@ A more complete declaration will include model mixins from other libraries. For 
 
     from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
     from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
-    from edc_model import models as edc_models
+    from edc_model.models import BaseUuidModel
     from edc_offstudy.model_mixins import OffstudyVisitModelMixin
     from edc_reference.model_mixins import ReferenceModelMixin
     from edc_sites.models import CurrentSiteManager
@@ -71,13 +76,13 @@ A more complete declaration will include model mixins from other libraries. For 
     from edc_visit_tracking.model_mixins import VisitModelMixin
 
     class SubjectVisit(
-        VisitModelMixin,
-        RequiresConsentFieldsModelMixin,
-        OffstudyVisitModelMixin,
-        CreatesMetadataModelMixin,
-        ReferenceModelMixin,
         SiteModelMixin,
-        edc_models.BaseUuidModel,
+        VisitModelMixin,
+        ReferenceModelMixin,
+        CreatesMetadataModelMixin,
+        RequiresConsentFieldsModelMixin,
+        OffstudyNonCrfModelMixin,
+        BaseUuidModel,
     ):
 
 
@@ -87,7 +92,7 @@ A more complete declaration will include model mixins from other libraries. For 
 
         history = edc_models.HistoricalRecords()
 
-    class Meta(VisitModelMixin.Meta, edc_models.BaseUuidModel.Meta):
+    class Meta(VisitModelMixin.Meta, BaseUuidModel.Meta):
         pass
 
 Declaring a CRF
