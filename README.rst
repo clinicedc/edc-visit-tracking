@@ -85,10 +85,9 @@ A more complete declaration will include model mixins from other libraries. For 
         BaseUuidModel,
     ):
 
+        objects = VisitModelManager()
 
         on_site = CurrentSiteManager()
-
-        objects = VisitModelManager()
 
         history = edc_models.HistoricalRecords()
 
