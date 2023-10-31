@@ -41,7 +41,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_ltfu.apps.AppConfig",
         "edc_notification.apps.AppConfig",
         "edc_protocol.apps.AppConfig",
-        "edc_reference.apps.AppConfig",
         "edc_registration.apps.AppConfig",
         "edc_sites.apps.AppConfig",
         "edc_timepoint.apps.AppConfig",
