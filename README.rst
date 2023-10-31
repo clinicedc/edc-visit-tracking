@@ -69,7 +69,6 @@ A more complete declaration will include model mixins from other libraries. For 
     from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
     from edc_model.models import BaseUuidModel
     from edc_offstudy.model_mixins import OffstudyVisitModelMixin
-    from edc_reference.model_mixins import ReferenceModelMixin
     from edc_sites.models import CurrentSiteManager
     from edc_sites.models import SiteModelMixin
     from edc_visit_tracking.managers import VisitModelManager
@@ -78,7 +77,6 @@ A more complete declaration will include model mixins from other libraries. For 
     class SubjectVisit(
         SiteModelMixin,
         VisitModelMixin,
-        ReferenceModelMixin,
         CreatesMetadataModelMixin,
         RequiresConsentFieldsModelMixin,
         OffstudyNonCrfModelMixin,
