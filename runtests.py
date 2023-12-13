@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 import logging
-import os
-import sys
-from os.path import abspath, dirname
+from pathlib import Path
 
-import django
-from django.conf import settings
-from django.test.runner import DiscoverRunner
-from edc_test_utils import DefaultTestSettings
+from edc_test_utils import DefaultTestSettings, func_main
 
 app_name = "edc_visit_tracking"
-base_dir = dirname(abspath(__file__))
 
-DEFAULT_SETTINGS = DefaultTestSettings(
+
+base_dir = Path(__file__).absolute().parent
+
+project_settings = DefaultTestSettings(
     calling_file=__file__,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
+    SITE_ID=1,
+    ETC_DIR=str(base_dir / app_name / "tests" / "etc"),
     SUBJECT_VISIT_MODEL="edc_visit_tracking.subjectvisit",
+    EDC_LTFU_MODEL_NAME="edc_ltfu.ltfu",
+    EDC_SITES_REGISTER_DEFAULT=True,
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
@@ -52,13 +52,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
 
 
 def main():
-    if not settings.configured:
-        settings.configure(**DEFAULT_SETTINGS)
-    django.setup()
-    tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
-    failfast = any([True for t in sys.argv if t.startswith("--failfast")])
-    failures = DiscoverRunner(failfast=failfast, tags=tags).run_tests([f"{app_name}.tests"])
-    sys.exit(failures)
+    func_main(project_settings, *[f"{app_name}.tests"])
 
 
 if __name__ == "__main__":
