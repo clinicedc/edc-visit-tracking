@@ -69,8 +69,8 @@ A more complete declaration will include model mixins from other libraries. For 
     from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
     from edc_model.models import BaseUuidModel
     from edc_offstudy.model_mixins import OffstudyVisitModelMixin
-    from edc_sites.models import CurrentSiteManager
-    from edc_sites.models import SiteModelMixin
+    from edc_sites.managers import CurrentSiteManager
+    from edc_sites.model_mixins import SiteModelMixin
     from edc_visit_tracking.managers import VisitModelManager
     from edc_visit_tracking.model_mixins import VisitModelMixin
 
