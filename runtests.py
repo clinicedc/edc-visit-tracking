@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import logging
+from datetime import datetime
 from pathlib import Path
 
+from _zoneinfo import ZoneInfo
 from edc_test_utils import DefaultTestSettings, func_main
 
 app_name = "edc_visit_tracking"
@@ -18,6 +20,12 @@ project_settings = DefaultTestSettings(
     SUBJECT_VISIT_MODEL="edc_visit_tracking.subjectvisit",
     EDC_LTFU_MODEL_NAME="edc_ltfu.ltfu",
     EDC_SITES_REGISTER_DEFAULT=True,
+    EDC_PROTOCOL_STUDY_OPEN_DATETIME=datetime(
+        year=2017, month=1, day=1, tzinfo=ZoneInfo("UTC")
+    ),
+    EDC_PROTOCOL_STUDY_CLOSE_DATETIME=datetime(
+        year=2021, month=1, day=1, tzinfo=ZoneInfo("UTC")
+    ),
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
