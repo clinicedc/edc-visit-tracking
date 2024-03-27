@@ -19,15 +19,15 @@ class Panel(DummyPanel):
     """
 
     def __init__(self, name):
-        super().__init__(requisition_model="edc_visit_tracking.subjectrequisition", name=name)
+        super().__init__(requisition_model="visit_tracking_app.subjectrequisition", name=name)
 
 
 crfs = CrfCollection(
-    Crf(show_order=1, model="edc_visit_tracking.crfone", required=True),
-    Crf(show_order=2, model="edc_visit_tracking.crftwo", required=True),
-    Crf(show_order=3, model="edc_visit_tracking.crfthree", required=True),
-    Crf(show_order=4, model="edc_visit_tracking.crffour", required=True),
-    Crf(show_order=5, model="edc_visit_tracking.crffive", required=True),
+    Crf(show_order=1, model="visit_tracking_app.crfone", required=True),
+    Crf(show_order=2, model="visit_tracking_app.crftwo", required=True),
+    Crf(show_order=3, model="visit_tracking_app.crfthree", required=True),
+    Crf(show_order=4, model="visit_tracking_app.crffour", required=True),
+    Crf(show_order=5, model="visit_tracking_app.crffive", required=True),
 )
 
 requisitions = RequisitionCollection(
@@ -41,29 +41,29 @@ requisitions = RequisitionCollection(
 
 visit_schedule1 = VisitSchedule(
     name="visit_schedule1",
-    offstudy_model="edc_visit_tracking.subjectoffstudy",
-    death_report_model="edc_visit_tracking.deathreport",
+    offstudy_model="visit_tracking_app.subjectoffstudy",
+    death_report_model="visit_tracking_app.deathreport",
     locator_model="edc_locator.subjectlocator",
 )
 
 visit_schedule2 = VisitSchedule(
     name="visit_schedule2",
-    offstudy_model="edc_visit_tracking.subjectoffstudy",
-    death_report_model="edc_visit_tracking.deathreport",
+    offstudy_model="visit_tracking_app.subjectoffstudy",
+    death_report_model="visit_tracking_app.deathreport",
     locator_model="edc_locator.subjectlocator",
 )
 
 schedule1 = Schedule(
     name="schedule1",
-    onschedule_model="edc_visit_tracking.onscheduleone",
-    offschedule_model="edc_visit_tracking.offscheduleone",
+    onschedule_model="visit_tracking_app.onscheduleone",
+    offschedule_model="visit_tracking_app.offscheduleone",
     consent_definitions=[consent_v1],
 )
 
 schedule2 = Schedule(
     name="schedule2",
-    onschedule_model="edc_visit_tracking.onscheduletwo",
-    offschedule_model="edc_visit_tracking.offscheduletwo",
+    onschedule_model="visit_tracking_app.onscheduletwo",
+    offschedule_model="visit_tracking_app.offscheduletwo",
     consent_definitions=[consent_v1],
     base_timepoint=4,
 )
