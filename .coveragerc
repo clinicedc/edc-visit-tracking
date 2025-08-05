@@ -1,4 +1,0 @@
-[run]
-include = edc_visit_tracking/*
-omit = edc_visit_tracking/tests/*,edc_visit_tracking/migrations/*,edc_visit_tracking/wsgi.py
-branch = 1

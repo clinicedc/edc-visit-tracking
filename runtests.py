@@ -8,7 +8,7 @@ import django
 app_name = "edc_visit_tracking"
 
 if __name__ == "__main__":
-    os.environ["DJANGO_SETTINGS_MODULE"] = f"{app_name}.tests.test_settings"
+    os.environ["DJANGO_SETTINGS_MODULE"] = "tests.test_settings"
     django.setup()
     from django.test.runner import DiscoverRunner
 
