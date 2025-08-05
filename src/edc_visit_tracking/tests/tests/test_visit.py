@@ -12,12 +12,17 @@ from edc_consent import site_consents
 from edc_facility.import_holidays import import_holidays
 from edc_utils import get_utcnow
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
+from edc_visit_tracking_app.consents import consent_v1
+from edc_visit_tracking_app.models import (
+    BadCrfOneInline,
+    CrfOne,
+    CrfOneInline,
+    OtherModel,
+)
+from edc_visit_tracking_app.visit_schedule import visit_schedule1, visit_schedule2
 
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED
 from edc_visit_tracking.models import SubjectVisit
-from visit_tracking_app.consents import consent_v1
-from visit_tracking_app.models import BadCrfOneInline, CrfOne, CrfOneInline, OtherModel
-from visit_tracking_app.visit_schedule import visit_schedule1, visit_schedule2
 
 from ..helper import Helper
 

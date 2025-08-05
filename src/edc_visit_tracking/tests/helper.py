@@ -3,8 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from edc_appointment.tests.helper import Helper as BaseHelper
-
-from visit_tracking_app.models import SubjectScreening
+from edc_visit_tracking_app.models import SubjectScreening
 
 if TYPE_CHECKING:
     from edc_appointment.models import Appointment

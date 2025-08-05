@@ -1353,6 +1353,7 @@ test = [
     { name = "edc-view-utils" },
     { name = "edc-visit-schedule" },
     { name = "edc-visit-tracking" },
+    { name = "edc-visit-tracking-app" },
     { name = "faker" },
     { name = "model-bakery" },
     { name = "time-machine" },
@@ -1442,11 +1443,21 @@ test = [
     { name = "edc-view-utils", specifier = ">=1.0.1" },
     { name = "edc-visit-schedule", specifier = ">=4.1.1" },
     { name = "edc-visit-tracking", specifier = ">=1.0.2" },
+    { name = "edc-visit-tracking-app", specifier = ">=0.1.1" },
     { name = "faker", specifier = ">=37.4.2" },
     { name = "model-bakery", specifier = ">=1.20.5" },
     { name = "time-machine", specifier = ">=2.16.0" },
     { name = "tox-uv", specifier = ">=1.26.2" },
     { name = "tqdm", specifier = ">=4.67.1" },
+]
+
+[[package]]
+name = "edc-visit-tracking-app"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fd/93/e23947f12b46d9e3cf7b7cf3f635b70e60483c306e80a90013a5d5e729a2/edc_visit_tracking_app-0.1.1.tar.gz", hash = "sha256:4ad13fa36abd4c72be2a39b79d5572204d2333668bc4e7b3b7737068b7cca608", size = 16571, upload-time = "2025-08-05T15:18:12.73Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/23/40/0c26b1c2ec79f5f77c999621346989685c1c24a7c4570b79cbb2c70dbb43/edc_visit_tracking_app-0.1.1-py3-none-any.whl", hash = "sha256:46e4cdbc57a492792733cfd7d14929f35ac57cc1a9a8fdea5129b20d1a442b18", size = 17732, upload-time = "2025-08-05T15:18:11.548Z" },
 ]
 
 [[package]]
