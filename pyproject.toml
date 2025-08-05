@@ -9,7 +9,7 @@ namespace = false
 
 [project]
 name = "edc-visit-tracking"
-version = "1.0.5"
+version = "1.0.6"
 description = "Base classes for visit reports/tracking in clinicedc/edc"
 readme = {file = "README.rst", content-type = "text/x-rst"}
 license = "GPL-3.0-or-later"
