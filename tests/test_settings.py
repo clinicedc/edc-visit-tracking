@@ -4,19 +4,21 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from edc_test_utils import DefaultTestSettings
+from edc_test_settings.default_test_settings import DefaultTestSettings
 
 app_name = "edc_visit_tracking"
 
 
-base_dir = Path(__file__).parent.parent.parent
+base_dir = Path(__file__).parent.parent
 
 project_settings = DefaultTestSettings(
     calling_file=__file__,
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     SITE_ID=1,
-    ETC_DIR=str(base_dir / app_name / "tests" / "etc"),
+    ETC_DIR=str(base_dir / "tests" / "etc"),
+    DJANGO_REVISION_IGNORE_WORKING_DIR=True,
+    HOLIDAY_FILE=base_dir / "tests" / "holidays.csv",
     SILENCED_SYSTEM_CHECKS=[
         "sites.E101",
         "edc_navbar.E002",
