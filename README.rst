@@ -57,7 +57,7 @@ If the subject does not require ICF, such as an infant, don't include the `Requi
         BaseUuidModel
     ):
 
-        class Meta(VisitModelMixin.Meta, , BaseUuidModel.Meta):
+        class Meta(VisitModelMixin.Meta, BaseUuidModel.Meta):
             pass
 
 
@@ -181,7 +181,7 @@ In your list model app, e.g. ``meta_lists``, declare the list model:
 .. code-block:: python
 
     list_data = {
-    ...
+    # ...
     "meta_lists.subjectvisitmissedreasons": [
         ("forgot", "Forgot / Can’t remember being told about appointment"),
         ("family_emergency", "Family emergency (e.g. funeral) and was away"),
@@ -191,7 +191,7 @@ In your list model app, e.g. ``meta_lists``, declare the list model:
         ("lack_of_transport", "Transportation difficulty"),
         (OTHER, "Other reason (specify below)",),
     ],
-    ...
+    # ...
     }
 
 
