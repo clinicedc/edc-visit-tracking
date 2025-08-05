@@ -11,14 +11,14 @@ from edc_consent import site_consents
 from edc_facility.import_holidays import import_holidays
 from edc_visit_schedule.fieldsets import visit_schedule_fields
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
+from edc_visit_tracking_app.consents import consent_v1
+from edc_visit_tracking_app.models import CrfOne
+from edc_visit_tracking_app.visit_schedule import visit_schedule1, visit_schedule2
 
 from edc_visit_tracking.admin_site import edc_visit_tracking_admin
 from edc_visit_tracking.constants import SCHEDULED
 from edc_visit_tracking.modeladmin_mixins import CrfModelAdminMixin
 from edc_visit_tracking.models import SubjectVisit
-from visit_tracking_app.consents import consent_v1
-from visit_tracking_app.models import CrfOne
-from visit_tracking_app.visit_schedule import visit_schedule1, visit_schedule2
 
 from ..helper import Helper
 
