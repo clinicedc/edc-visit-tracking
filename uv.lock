@@ -1260,16 +1260,16 @@ wheels = [
 
 [[package]]
 name = "edc-visit-schedule"
-version = "4.1.1"
+version = "4.1.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a7/21/14708ff0ada9b4b4143fd0d34019fdb3fca7be6261d255756f01615548d3/edc_visit_schedule-4.1.1.tar.gz", hash = "sha256:e94af279d3450014174b8831790da375c30be171c8460610b1255b00df8dfe09", size = 84127, upload-time = "2025-06-26T18:29:18.669Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2a/75/553b413ac226cb46593bf4bbc4588335d7643ae17d1cfdd3b1c084c114a8/edc_visit_schedule-4.1.2.tar.gz", hash = "sha256:84246dda7fe8d61a3e85b9ea8354dbc7db83a58cf10093cb729907911ff2a173", size = 64151, upload-time = "2025-08-05T02:31:39.068Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cc/03/2d42a7d2f48671891bef1a144e79aeecabc88d890f6167c1c1e7043561c1/edc_visit_schedule-4.1.1-py3-none-any.whl", hash = "sha256:b927d614cddb1154166e81c4323d148a190600f2bc354adac8bd0253f1d6c20c", size = 119347, upload-time = "2025-06-26T18:29:17.462Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/ee/00b58507d2e2aca153e3d9aa77c71b256a97a56f69e385a128354c2493cd/edc_visit_schedule-4.1.2-py3-none-any.whl", hash = "sha256:55c594733d8b3d7d58f270bf99ab20bfdd1f73cc4d003376fcc4ed208e01c9ac", size = 109259, upload-time = "2025-08-05T02:31:37.622Z" },
 ]
 
 [[package]]
 name = "edc-visit-tracking"
-version = "1.0.3"
+version = "1.0.4"
 source = { editable = "." }
 
 [package.dev-dependencies]
